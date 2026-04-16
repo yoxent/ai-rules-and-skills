@@ -6,8 +6,66 @@ Quick validation script for skills - minimal version
 import sys
 import os
 import re
-import yaml
 from pathlib import Path
+
+try:
+    import yaml  # type: ignore
+except ModuleNotFoundError:
+    yaml = None
+
+
+def _parse_frontmatter_without_yaml(frontmatter_text):
+    """
+    Minimal YAML frontmatter parser fallback.
+    Supports:
+    - key: value
+    - key: >  (folded multiline block)
+    - key: |  (literal multiline block)
+    """
+    result = {}
+    lines = frontmatter_text.splitlines()
+    i = 0
+
+    while i < len(lines):
+        raw_line = lines[i]
+        line = raw_line.strip()
+        i += 1
+
+        if not line or line.startswith('#'):
+            continue
+        if ':' not in raw_line:
+            raise ValueError(f"Invalid frontmatter line: {raw_line}")
+
+        key, value = raw_line.split(':', 1)
+        key = key.strip()
+        value = value.strip()
+
+        if value in ('>', '|'):
+            block_lines = []
+            while i < len(lines):
+                next_line = lines[i]
+                if next_line.startswith(' ') or next_line.startswith('\t'):
+                    block_lines.append(next_line.strip())
+                    i += 1
+                    continue
+                if not next_line.strip():
+                    block_lines.append('')
+                    i += 1
+                    continue
+                break
+
+            if value == '>':
+                result[key] = ' '.join(part for part in block_lines if part).strip()
+            else:
+                result[key] = '\n'.join(block_lines).strip()
+            continue
+
+        # Strip matching quotes for simple scalar values.
+        if (value.startswith('"') and value.endswith('"')) or (value.startswith("'") and value.endswith("'")):
+            value = value[1:-1]
+        result[key] = value
+
+    return result
 
 def validate_skill(skill_path):
     """Basic validation of a skill"""
@@ -31,12 +89,20 @@ def validate_skill(skill_path):
     frontmatter_text = match.group(1)
 
     # Parse YAML frontmatter
-    try:
-        frontmatter = yaml.safe_load(frontmatter_text)
-        if not isinstance(frontmatter, dict):
-            return False, "Frontmatter must be a YAML dictionary"
-    except yaml.YAMLError as e:
-        return False, f"Invalid YAML in frontmatter: {e}"
+    if yaml is not None:
+        try:
+            frontmatter = yaml.safe_load(frontmatter_text)
+            if not isinstance(frontmatter, dict):
+                return False, "Frontmatter must be a YAML dictionary"
+        except yaml.YAMLError as e:
+            return False, f"Invalid YAML in frontmatter: {e}"
+    else:
+        try:
+            frontmatter = _parse_frontmatter_without_yaml(frontmatter_text)
+            if not isinstance(frontmatter, dict):
+                return False, "Frontmatter must be a YAML dictionary"
+        except ValueError as e:
+            return False, f"Invalid frontmatter format: {e}"
 
     # Define allowed properties
     ALLOWED_PROPERTIES = {'name', 'description', 'license', 'allowed-tools', 'metadata'}

@@ -6,8 +6,8 @@ Usage:
     init_skill.py <skill-name> --path <path>
 
 Examples:
-    init_skill.py my-new-skill --path skills/public
-    init_skill.py my-api-helper --path skills/private
+    init_skill.py my-new-skill --path .cursor/skills
+    init_skill.py my-api-helper --path ./skills
     init_skill.py custom-skill --path /custom/location
 """
 
@@ -32,22 +32,22 @@ description: [TODO: Complete and informative explanation of what the skill does 
 
 **1. Workflow-Based** (best for sequential processes)
 - Works well when there are clear step-by-step procedures
-- Example: DOCX skill with "Workflow Decision Tree" → "Reading" → "Creating" → "Editing"
+- Example: File-processing skill with "Workflow Decision Tree" → "Read" → "Transform" → "Validate"
 - Structure: ## Overview → ## Workflow Decision Tree → ## Step 1 → ## Step 2...
 
 **2. Task-Based** (best for tool collections)
 - Works well when the skill offers different operations/capabilities
-- Example: PDF skill with "Quick Start" → "Merge PDFs" → "Split PDFs" → "Extract Text"
+- Example: API helper skill with "Quick Start" → "Read Data" → "Write Data" → "Troubleshooting"
 - Structure: ## Overview → ## Quick Start → ## Task Category 1 → ## Task Category 2...
 
 **3. Reference/Guidelines** (best for standards or specifications)
 - Works well for brand guidelines, coding standards, or requirements
-- Example: Brand styling with "Brand Guidelines" → "Colors" → "Typography" → "Features"
+- Example: Team coding standards with "Naming" → "Testing" → "Performance" → "Review checklist"
 - Structure: ## Overview → ## Guidelines → ## Specifications → ## Usage...
 
 **4. Capabilities-Based** (best for integrated systems)
 - Works well when the skill provides multiple interrelated features
-- Example: Product Management with "Core Capabilities" → numbered capability list
+- Example: DevOps assistant with "Core Capabilities" → numbered capability list
 - Structure: ## Overview → ## Core Capabilities → ### 1. Feature → ### 2. Feature...
 
 Patterns can be mixed and matched as needed. Most skills combine patterns (e.g., start with task-based, add workflow for complex operations).
@@ -69,31 +69,31 @@ This skill includes example resource directories that demonstrate how to organiz
 ### scripts/
 Executable code (Python/Bash/etc.) that can be run directly to perform specific operations.
 
-**Examples from other skills:**
-- PDF skill: `fill_fillable_fields.py`, `extract_form_field_info.py` - utilities for PDF manipulation
-- DOCX skill: `document.py`, `utilities.py` - Python modules for document processing
+**Examples:**
+- `transform_data.py` - converts input formats
+- `validate_output.py` - checks generated artifacts
 
 **Appropriate for:** Python scripts, shell scripts, or any executable code that performs automation, data processing, or specific operations.
 
-**Note:** Scripts may be executed without loading into context, but can still be read by Claude for patching or environment adjustments.
+**Note:** Scripts may be executed without loading into context, but can still be read by the assistant for patching or environment adjustments.
 
 ### references/
-Documentation and reference material intended to be loaded into context to inform Claude's process and thinking.
+Documentation and reference material intended to be loaded into context to inform the assistant's process and decisions.
 
-**Examples from other skills:**
-- Product management: `communication.md`, `context_building.md` - detailed workflow guides
-- BigQuery: API reference documentation and query examples
-- Finance: Schema documentation, company policies
+**Examples:**
+- `api_reference.md` - endpoint and schema details
+- `workflow_guide.md` - step-by-step procedures
+- `policies.md` - constraints and compliance requirements
 
-**Appropriate for:** In-depth documentation, API references, database schemas, comprehensive guides, or any detailed information that Claude should reference while working.
+**Appropriate for:** In-depth documentation, API references, database schemas, comprehensive guides, or any detailed information that should be referenced while working.
 
 ### assets/
-Files not intended to be loaded into context, but rather used within the output Claude produces.
+Files not intended to be loaded into context, but rather used within generated output.
 
-**Examples from other skills:**
-- Brand styling: PowerPoint template files (.pptx), logo files
-- Frontend builder: HTML/React boilerplate project directories
-- Typography: Font files (.ttf, .woff2)
+**Examples:**
+- slide templates and document templates
+- starter code boilerplates
+- icons, images, and font files
 
 **Appropriate for:** Templates, boilerplate code, document templates, images, icons, fonts, or any files meant to be copied or used in the final output.
 
@@ -108,10 +108,6 @@ Example helper script for {skill_name}
 
 This is a placeholder script that can be executed directly.
 Replace with actual implementation or delete if not needed.
-
-Example real scripts from other skills:
-- pdf/scripts/fill_fillable_fields.py - Fills PDF form fields
-- pdf/scripts/convert_pdf_to_images.py - Converts PDF pages to images
 """
 
 def main():
@@ -129,9 +125,9 @@ This is a placeholder for detailed reference documentation.
 Replace with actual reference content or delete if not needed.
 
 Example real reference docs from other skills:
-- product-management/references/communication.md - Comprehensive guide for status updates
-- product-management/references/context_building.md - Deep-dive on gathering context
-- bigquery/references/ - API references and query examples
+- API and schema references
+- workflow and runbook documentation
+- domain policies and constraints
 
 ## When Reference Docs Are Useful
 
@@ -168,10 +164,10 @@ Asset files are NOT intended to be loaded into context, but rather used within
 the output Claude produces.
 
 Example asset files from other skills:
-- Brand guidelines: logo.png, slides_template.pptx
-- Frontend builder: hello-world/ directory with HTML/React boilerplate
-- Typography: custom-font.ttf, font-family.woff2
-- Data: sample_data.csv, test_dataset.json
+- logo.png, slides_template.pptx
+- starter-app/ directory with boilerplate code
+- custom-font.ttf, font-family.woff2
+- sample_data.csv, test_dataset.json
 
 ## Common Asset Types
 
@@ -279,8 +275,8 @@ def main():
         print("  - Max 40 characters")
         print("  - Must match directory name exactly")
         print("\nExamples:")
-        print("  init_skill.py my-new-skill --path skills/public")
-        print("  init_skill.py my-api-helper --path skills/private")
+        print("  init_skill.py my-new-skill --path .cursor/skills")
+        print("  init_skill.py my-api-helper --path ./skills")
         print("  init_skill.py custom-skill --path /custom/location")
         sys.exit(1)
 

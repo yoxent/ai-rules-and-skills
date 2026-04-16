@@ -20,6 +20,9 @@ public class IntEventChannel : ScriptableObject {
 ## Dependency Injection (Simple Injector / Composition Root)
 Avoid global/static service locators. Prefer a scene-wired `GameContext` (composition root) that holds references to shared services and is passed explicitly (via serialized field or `Initialize(...)` calls). Keep injection reflection-free and easy to trace in the inspector and via call sites.
 
+## Data-Driven Configuration
+Prefer ScriptableObject/config-asset driven systems for rules, scoring, AI tuning, and balance values. Avoid scattering gameplay constants across MonoBehaviours; centralize tunables in dedicated data assets.
+
 ## State Machine
 Use a generic `StateMachine<T>` with `IState` interfaces for characters or game flow management.
 
