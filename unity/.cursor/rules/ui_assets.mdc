@@ -1,0 +1,12 @@
+---
+description: "UI + asset loading guardrails"
+globs: ["**/UI/**", "**/*UI*.cs", "**/*Addressable*.cs", "Assets/Resources/**"]
+---
+
+# UI & Assets Standards
+
+- UI framework: UI Toolkit by default.
+- Prefer data binding for UI state synchronization whenever practical.
+- UGUI/TextMeshPro is fallback-only for unsupported or legacy cases.
+- Runtime loading: Addressables by default.
+- `Resources.Load` allowed only for `Assets/Resources/Data/*`.
