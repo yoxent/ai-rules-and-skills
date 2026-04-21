@@ -7,24 +7,21 @@ description: >
 
 # Version Control Tracker Skill (Meta)
 
-Purpose: track change history, snapshots, and rollback points.
-Tracking/recommendation only; no code or asset modification.
+PURPOSE: track change history, snapshots, rollback points.
+ROLE: tracking + recommendation only; no code/asset modification.
 
 ## Responsibilities
-- Record change history by task/skill/path/outcome/time.
+- Record change history by task / skill / path / outcome / time.
 - Store snapshots before risky edits; include scene files for scene work.
 - Suggest rollback points at stable milestones.
-- Use past tense for `change_history` and `rollback_points.description` text.
+- Use past tense for `change_history` + `rollback_points.description` text.
 
 ## Hard Constraints
-- No patching/merging/rebasing/conflict resolution.
-- Treat safety as advisory unless explicitly confirmed.
-- For scene changes, require snapshot first.
+- No patching / merging / rebasing / conflict resolution.
+- Safety is advisory unless explicitly confirmed.
+- Scene changes -> require snapshot first.
 
-## Required JSON Output
-
-Return only this JSON shape (no extra text):
-
+## Required JSON Output (only; no extra text)
 ```json
 {
   "snapshots": [
@@ -45,8 +42,7 @@ Return only this JSON shape (no extra text):
 }
 ```
 
-## Operational Algorithm
-
+## Algorithm
 1. Determine read vs update request.
-2. Update or fetch snapshots/history/rollback points.
+2. Update or fetch snapshots / history / rollback points.
 3. Return JSON only.

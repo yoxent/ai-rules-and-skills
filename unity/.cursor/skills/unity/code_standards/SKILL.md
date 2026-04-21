@@ -6,17 +6,17 @@ description: C# Best Practices. Enforces naming, lifecycle ordering, serializati
 # C# & MonoBehaviour Standards
 
 ## Lifecycle Ordering
-1. Serialized Fields -> 2. Private Fields -> 3. Properties -> 4. Awake/OnEnable/Start -> 5. Update/FixedUpdate/LateUpdate -> 6. OnDisable/OnDestroy.
+Serialized Fields -> Private Fields -> Properties -> Awake/OnEnable/Start -> Update/FixedUpdate/LateUpdate -> OnDisable/OnDestroy.
 
 ## Serialization Attributes
-- Use `[Header("Label")]` for grouping inspector fields.
-- Use `[Tooltip("Info")]` for internal documentation.
-- Use `[Range(min, max)]` to constrain numeric values.
+- `[Header("Label")]` to group inspector fields.
+- `[Tooltip("Info")]` for internal docs.
+- `[Range(min, max)]` to constrain numerics.
 
 ## Clean Code Patterns
-- Use **Pattern Matching** and **String Interpolation**.
-- Use **Expression-bodied members** for simple properties.
-- **XML Docs**: Provide `<summary>` for public classes and `<param>`/`<returns>` for public methods.
+- Pattern matching + string interpolation.
+- Expression-bodied members for simple properties.
+- XML Docs: `<summary>` on public classes; `<param>`/`<returns>` on public methods.
 
 ## Example Standard Mono
 ```csharp
@@ -24,11 +24,11 @@ public class LifecycleExample : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private float _speed = 5f;
-    
+
     private Rigidbody _rigidbody;
-    
+
     public float CurrentSpeed => _speed;
-    
+
     private void Awake()
     {
         if (!TryGetComponent(out _rigidbody))

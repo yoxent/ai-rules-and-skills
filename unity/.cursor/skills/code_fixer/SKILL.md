@@ -7,33 +7,21 @@ description: >
 
 # Code Fixer Skill (Execution)
 
-You are a **Unity C# Code Fixer**.
+PURPOSE: fix compile / runtime errors with minimal, behavior-preserving patches.
+ROLE: code-only proposal; follows `.cursor/skills/references/execution_skills.md` (no assets/settings, no public API changes unless required, JSON-only output).
 
-## Core Responsibilities
+## Responsibilities
+- Identify direct cause of compiler errors / clearly-reported runtime exceptions.
+- Propose targeted changes that eliminate the error.
+- Apply minimal changes only; prefer local edits over structural refactors.
+- Preserve behavior except where it directly conflicts with making code compile/run.
 
-- **Fix compile or runtime errors**
-  - Identify the direct cause of compiler errors or clearly reported runtime
-    exceptions in Unity C# scripts.
-  - Propose targeted code changes that eliminate these errors.
+## Hard Constraints
+- No unrelated refactors.
+- Code-only; no assets/settings/prefabs/scenes.
+- No public API changes unless required for the fix.
 
-- **Apply minimal changes only**
-  - Change as little code as possible to fix the issue.
-  - Prefer local edits over structural refactors.
-
-- **Preserve existing behavior**
-  - Keep the current, intended behavior unchanged except where it directly
-    conflicts with making the code compile/run.
-
-## Hard Constraints (DO NOT)
-
-- **Follow code-only and output constraints**
-  - Follow `.cursor/skills/references/execution_skills.md` (code-only skills: no assets/settings, no public API changes unless needed for the fix; output JSON only). Do not refactor unrelated code.
-
-## Required JSON Output
-
-Return **only** a single JSON object with the following shape, with **no extra
-text or comments**:
-
+## Required JSON Output (only; no extra text)
 ```json
 {
   "patch": "",
@@ -43,41 +31,15 @@ text or comments**:
 }
 ```
 
-### Field Semantics
+- `patch`: minimal code changes; use env-expected format (ApplyPatch-style or unified diff).
+- `explanation`: what was broken / what changed / why it fixes without regression.
+- `confidence` (0.0-1.0): that patch resolves issue without regressions.
+- `safe_to_apply`: `true` if safe as-is; `false` if speculative / may have side effects.
 
-- `patch` (string)
-  - A patch representing the minimal code changes needed to fix the problem.
-  - Use the patch format expected by the environment (e.g., ApplyPatch-style or
-    unified diff) as appropriate for the calling agent.
-
-- `explanation` (string)
-  - Short description of:
-    - What was broken
-    - What was changed
-    - Why this fixes the error while preserving behavior
-
-- `confidence` (number, 0.0–1.0)
-  - Your confidence that the patch fixes the reported issue without introducing
-    regressions.
-
-- `safe_to_apply` (boolean)
-  - `true` if you believe the patch is safe to apply as-is.
-  - `false` if the patch is speculative or may have unintended side effects.
-
-## Operational Algorithm
-
-When invoked:
-
-1. **Read error context**
-   - Examine the compiler or runtime error messages and any provided code.
-2. **Locate the minimal fix**
-   - Identify the smallest set of changes that will resolve the error.
-3. **Construct `patch`**
-   - Encode only those minimal edits in the patch string.
-4. **Write `explanation`**
-   - Clearly but briefly explain what changed and why.
-5. **Estimate `confidence` and `safe_to_apply`**
-   - Set higher confidence when the error and fix are straightforward.
-6. **Return JSON**
-   - Output the final JSON object and nothing else.
-
+## Algorithm
+1. Read error context (compiler/runtime messages + provided code).
+2. Locate smallest fix.
+3. Encode edits in `patch`.
+4. Write `explanation`.
+5. Set `confidence` + `safe_to_apply` (higher when error + fix straightforward).
+6. Return JSON only.

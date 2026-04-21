@@ -7,24 +7,21 @@ description: >
 
 # Memory Manager Skill (Meta – Supporting)
 
-Purpose: maintain and serve project memory.
-Memory/context only; no execution.
+PURPOSE: maintain + serve project memory.
+ROLE: memory/context only; no execution.
 
 ## Responsibilities
-- Track completed work with task id, skill, outcome, and timestamp.
-- Maintain roadmap entries with priority and dependencies.
+- Track completed work: task id, skill, outcome, timestamp.
+- Maintain roadmap entries with priority + dependencies.
 - Surface relevant decisions/assumptions in summaries.
-- Append/merge updates; preserve history unless explicit reset/correction is requested.
+- Append/merge updates; preserve history unless explicit reset/correction requested.
 
 ## Hard Constraints
 - No code/asset edits or execution of other skills.
 - Do not invent scope; base outputs on recorded state.
-- Do not overwrite/delete history without explicit instruction.
+- NEVER overwrite/delete history without explicit instruction.
 
-## Required JSON Output
-
-Return only this JSON shape (no extra text):
-
+## Required JSON Output (only; no extra text)
 ```json
 {
   "summary": "",
@@ -49,10 +46,9 @@ Return only this JSON shape (no extra text):
 }
 ```
 
-## Operational Algorithm
-
-1. Determine read/update intent.
+## Algorithm
+1. Determine read vs update intent.
 2. Load existing memory state.
 3. Apply append/merge updates.
-4. Return `summary`, `tasks_completed`, `roadmap`, and `relevant_context`.
+4. Return `summary`, `tasks_completed`, `roadmap`, `relevant_context`.
 5. Return JSON only.

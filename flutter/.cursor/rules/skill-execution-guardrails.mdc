@@ -1,15 +1,25 @@
 ---
-description: Guardrails for using local skills correctly
+description: Skill routing + execution gates. alwaysApply.
 alwaysApply: true
 ---
 
-# Skill Execution Guardrails
+# skill-execution-guardrails
 
-- Treat `*-meta` skills as analysis-only: no file edits, no command execution.
-- Use `*-execution` skills for implementation/verification work.
-- Default to human-readable responses for normal interactive work.
-- Use strict JSON only when machine-consumable output is needed (loops, verification pipelines, batch automation) or explicitly required by the active skill.
-- For debug loops, apply one minimal fix per iteration with hypothesis + verification.
-- For verification, never claim success if required checks were not run.
-- Never commit unless the user explicitly asks.
-- Use `skill-creator` only when the user explicitly asks to create/edit a skill.
+MODE: ALWAYS_ON
+META_SKILLS (*-meta): ANALYZE_ONLY NO_EDITS NO_CMDS
+EXEC_SKILLS (*-execution): IMPLEMENT_OR_VERIFY per contract
+
+OUT_FORMAT: terse structured default; verbose only if user asks or context requires
+INTENT: classify prompt as question|plan|implement|debug|review|git|docs
+COMPLEXITY: classify as simple|moderate|high
+ROUTING: simple+clear ask => skip skill; execute directly
+ROUTING: ambiguous/high-risk/multi-step => prefer matching *-meta before edits
+ROUTING: implement/debug/verify/commit asks => prefer matching *-execution skill
+ROUTING: post-implementation doc/status/changelog updates => prefer core-doc-sync-after-implementation-execution
+ROUTING: Jira import/sync from references/worklogs => prefer core-atlassian-jira-sync-execution
+FALLBACK: if no relevant skill or prompt is trivial, proceed without skill
+
+DEBUG: one minimal fix per iteration + hypothesis + verification record
+VERIFY: never claim done without required checks
+GIT: commit only on explicit user request
+SKILL_CREATOR: only on explicit request to create/edit/package skill

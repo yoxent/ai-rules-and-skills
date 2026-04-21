@@ -7,27 +7,21 @@ description: >
 
 # Prefab & Scene Generator Skill (Execution)
 
-You are a **Unity Prefab & Scene Generator**.
+PURPOSE: generate prefab/scene **specifications** (JSON only).
+ROLE: specification output only; does not apply changes. Follows `.cursor/skills/references/execution_skills.md` (scope, output).
 
-## Core Responsibilities
+## Responsibilities
+- **Prefab spec**: name, root transform, child hierarchy, per-GameObject component list (type + key properties).
+- **Scene spec**: root objects, transforms (position/rotation/scale), prefabs/types to instantiate, optional overrides.
+- Use Unity-standard components (Transform, RectTransform, Collider, Rigidbody, Animator, etc.) + project scripts by name/assembly.
+- Prefer URP / Unity 6 standard component names + common serialized fields; avoid engine-internal or version-specific internals.
 
-- **Generate prefab or scene specifications**
-  - Produce **specifications only**: hierarchy, component types, serialized field values where applicable.
-  - Prefabs: name, root transform, child hierarchy, list of components per GameObject with type and key properties.
-  - Scenes: root objects, transforms (position/rotation/scale), which prefabs or types to instantiate, and optional overrides.
+## Hard Constraints
+- NO `.prefab`/`.unity` bytes or YAML output.
+- NO edits to existing scenes.
+- Specifications only; a tool or user applies the spec downstream.
 
-- **Use Unity-standard components**
-  - Reference built-in components (Transform, RectTransform, Collider, Rigidbody, Animator, etc.) and project scripts by name/assembly.
-  - Prefer standard URP/Unity 6 component names and common serialized fields; avoid engine-internal or version-specific internals.
-
-## Hard Constraints (DO NOT)
-
-- **Follow execution constraints** – `.cursor/skills/references/execution_skills.md` (scope, output). This skill outputs **specifications only**: structured JSON, no .prefab/.unity bytes or YAML, no edits to existing scenes. A tool or user applies the spec; this skill does not apply changes. Role: **specification output only**.
-
-## Required JSON Output
-
-Return **only** a single JSON object with the following shape, with **no extra text or comments**:
-
+## Required JSON Output (only; no extra text)
 ```json
 {
   "prefabs": [],
@@ -35,25 +29,11 @@ Return **only** a single JSON object with the following shape, with **no extra t
 }
 ```
 
-### Field Semantics
+- `prefabs` (array): each entry = one prefab with `name`, `root` (transform + optional component list), `children` (recursive hierarchy), `components` (type names + key properties). Use Unity component + project C# class names (for example `UnityEngine.Transform`, `UnityEngine.BoxCollider`).
+- `scene_layout` (object): root GameObjects, positions/rotations/scales, references to prefab names in `prefabs` or placeholder types. May include layers, tags, minimal overrides. Serializable + unambiguous for downstream generator/editor script.
 
-- `prefabs` (array of objects)
-  - Each entry describes one prefab: e.g. `name`, `root` (transform + optional component list), `children` (recursive hierarchy), `components` (array of component type names and key property objects).
-  - Use Unity component and script names as used in the project (e.g. `UnityEngine.Transform`, `UnityEngine.BoxCollider`, or project C# class names).
-
-- `scene_layout` (object)
-  - Describes the scene: e.g. root GameObjects, their positions/rotations/scales, references to prefab names from `prefabs`, or placeholder types.
-  - May include layers, tags, and minimal overrides; keep it serializable and unambiguous for a downstream generator or editor script.
-
-## Operational Algorithm
-
-When invoked:
-
-1. **Read request**
-   - Determine what prefabs and/or scene layout are needed (from intent or task context).
-2. **Design prefabs**
-   - For each prefab, define hierarchy and Unity-standard components; populate `prefabs`.
-3. **Design scene layout**
-   - Define root objects, transforms, and references into `prefabs`; populate `scene_layout`.
-4. **Return JSON**
-   - Output the final JSON object and nothing else.
+## Algorithm
+1. Read request; determine needed prefabs and/or scene layout.
+2. Design prefabs (hierarchy + components) -> `prefabs`.
+3. Design scene layout (roots + transforms + prefab refs) -> `scene_layout`.
+4. Return JSON only.

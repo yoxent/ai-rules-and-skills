@@ -7,28 +7,20 @@ description: >
 
 # Code Refactorer Skill (Execution)
 
-You are a **Unity C# Refactoring AI**.
+PURPOSE: improve readability / performance without changing behavior or public APIs.
+ROLE: follows `.cursor/skills/references/execution_skills.md` (code-only: no assets/settings, no public API changes; JSON-only output).
 
-## Core Responsibilities
+## Responsibilities
+- Simplify complex code; remove duplication; clarify intent.
+- Apply safe micro-optimizations that do not alter observable behavior.
+- Refactored code must be functionally equivalent; gameplay outcomes + side effects unchanged.
 
-- **Improve readability or performance**
-  - Simplify complex code, remove duplication, and clarify intent.
-  - Apply safe micro-optimizations that do not alter observable behavior.
+## Hard Constraints
+- Do not change gameplay logic.
+- Code-only; no assets/settings changes.
+- No public API changes.
 
-- **Preserve behavior exactly**
-  - The refactored code must be functionally equivalent to the original.
-  - All gameplay outcomes and side effects must remain the same.
-
-## Hard Constraints (DO NOT)
-
-- **Follow code-only and output constraints**
-  - Follow `.cursor/skills/references/execution_skills.md` (code-only skills: no assets/settings, no public API changes; output JSON only). Do not change gameplay logic.
-
-## Required JSON Output
-
-Return **only** a single JSON object with the following shape, with **no extra
-text or comments**:
-
+## Required JSON Output (only; no extra text)
 ```json
 {
   "patch": "",
@@ -37,37 +29,14 @@ text or comments**:
 }
 ```
 
-### Field Semantics
+- `patch`: refactor changes; env-expected format (ApplyPatch-style or unified diff).
+- `refactor_type`: short label (for example `"extract_method"`, `"rename_private_field"`, `"remove_duplication"`, `"loop_optimization"`, `"early_return"`).
+- `behavior_changed`: MUST be `false` for valid refactors. Set `true` only if behavior might have changed (caller treats as unsafe).
 
-- `patch` (string)
-  - A patch representing the refactoring changes.
-  - Use the patch format expected by the environment (e.g., ApplyPatch-style or
-    unified diff) as appropriate for the calling agent.
-
-- `refactor_type` (string)
-  - Short label or description of the primary refactor performed.
-  - Examples: `"extract_method"`, `"rename_private_field"`,
-    `"remove_duplication"`, `"loop_optimization"`, `"early_return"`.
-
-- `behavior_changed` (boolean)
-  - Must be `false` for valid refactors under this skill.
-  - Set to `true` only if you detect that behavior might have changed; in such
-    a case, the calling agent should treat the refactor as unsafe.
-
-## Operational Algorithm
-
-When invoked:
-
-1. **Analyze existing code**
-   - Identify opportunities to improve clarity, structure, or performance.
-2. **Select safe refactors**
-   - Choose transformations that do not change observable behavior.
-3. **Construct `patch`**
-   - Encode the refactoring changes as a patch string.
-4. **Set `refactor_type`**
-   - Describe the dominant refactoring pattern used.
-5. **Set `behavior_changed`**
-   - Default to `false` if behavior is preserved; otherwise `true` if any doubt.
-6. **Return JSON**
-   - Output the final JSON object and nothing else.
-
+## Algorithm
+1. Analyze code; identify clarity/structure/performance opportunities.
+2. Select safe refactors (no observable behavior change).
+3. Construct `patch`.
+4. Set `refactor_type` (dominant pattern).
+5. Set `behavior_changed` = `false` if preserved, `true` if any doubt.
+6. Return JSON only.
