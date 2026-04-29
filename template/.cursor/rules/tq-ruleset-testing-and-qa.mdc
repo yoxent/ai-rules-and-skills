@@ -1,0 +1,29 @@
+---
+description: "TQ-RULESET: Testing & QA"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# TQ-RULESET: Testing & QA
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Governance rules for testing, quality assurance, and regression prevention
+
+## INTENT
+Ensure that all features and bug fixes are validated through appropriate testing, regression checks, and QA practices to maintain code quality, correctness, and reliability.
+
+## DEFINITIONS
+- Test Coverage: Degree to which code is exercised by tests.
+- Regression Check: Ensuring new changes do not break existing functionality.
+- QA: Quality assurance processes for code validation.
+- Test Quality: Meaningful, maintainable, and correct test cases.
+- Test Failure: A test not passing expected assertions.
+
+## RULES INDEX
+- TQ-1: Test Coverage Requirement
+- TQ-2: Test Failure Diagnosis
+- TQ-3: Regression Prevention
+- TQ-4: Test Quality Rule
+
+## CHANGELOG
+- 1.0.0: Initial creation.

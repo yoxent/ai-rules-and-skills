@@ -1,0 +1,17 @@
+---
+description: "DT-3: Priority Resolution"
+alwaysApply: true
+---
+
+# DT-3: Priority Resolution
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Any conflict between business and engineering priorities
+
+## CATEGORY CONTEXT
+- Conflict: Situation where business objectives and engineering constraints are at odds.
+- Resolution: Decision that clearly defines which priority takes precedence.
+
+ENFORCE: All conflicts must be identified, documented, and resolved with a recorded decision before action proceeds.
+PROHIBIT: Acting on unresolved conflicting priorities.
+ON VIOLATION: Halt actions on conflicting priorities → escalate to Orchestrator if unresolvable.

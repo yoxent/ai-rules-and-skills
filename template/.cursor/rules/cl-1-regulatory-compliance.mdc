@@ -1,0 +1,18 @@
+---
+description: "CL-1: Regulatory Compliance"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# CL-1: Regulatory Compliance
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: All code touching sensitive, financial, or personal data
+
+## CATEGORY CONTEXT
+- Regulatory Compliance: Adherence to laws such as GDPR, HIPAA, PCI, and other jurisdictional requirements.
+- Sensitive Data: Information requiring confidentiality or protection under law or policy.
+
+ENFORCE: Every feature handling protected data must comply with applicable regulations before release.
+PROHIBIT: Unauthorized data storage or transmission; non-compliant data handling.
+ON VIOLATION: Halt skill execution → escalate to Legal/Compliance Skill.

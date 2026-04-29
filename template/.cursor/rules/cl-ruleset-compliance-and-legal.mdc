@@ -1,0 +1,28 @@
+---
+description: "CL-RULESET: Compliance & Legal"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# CL-RULESET: Compliance & Legal
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Governance rules for legal, regulatory, and data compliance
+
+## INTENT
+Ensure that all engineering work adheres to applicable regulations, legal constraints, license requirements, and data privacy standards to prevent legal liability and ensure responsible handling of sensitive data.
+
+## DEFINITIONS
+- Regulatory Compliance: Adherence to laws such as GDPR, HIPAA, PCI, and other jurisdictional requirements.
+- License Compatibility: Ensuring third-party libraries' licenses permit intended use.
+- Sensitive Data: Information requiring confidentiality or protection under law or policy.
+- Ethical Risk: Potential for features or designs to cause harm to users or stakeholders.
+
+## RULES INDEX
+- CL-1: Regulatory Compliance
+- CL-2: License Validation
+- CL-3: Data Privacy
+- CL-4: Ethical Risk Flagging
+
+## CHANGELOG
+- 1.0.0: Initial creation.

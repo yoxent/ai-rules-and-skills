@@ -1,0 +1,16 @@
+---
+description: "GM-3: Modular Enforcement"
+alwaysApply: true
+---
+
+# GM-3: Modular Enforcement
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: All task orchestration
+
+## CATEGORY CONTEXT
+- Modular Enforcement: Loading and applying only the rules relevant to the current task or skill.
+
+ENFORCE: Only rule subsets relevant to the current task may be loaded; log which subsets were loaded per task.
+PROHIBIT: Loading all rules globally for every task.
+ON VIOLATION: Halt execution if relevant rules fail to load → notify system administrator.

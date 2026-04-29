@@ -1,0 +1,19 @@
+---
+description: "DA-1: SOLID & Clean Code First"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# DA-1: SOLID & Clean Code First
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: All code changes
+
+## CATEGORY CONTEXT
+- SOLID Principles: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion.
+- Clean Code: Readable, maintainable, and minimal complexity code.
+
+ENFORCE: SOLID principles and Clean Code on all new and modified code.
+ALLOW: Relax for approved performance-critical paths only.
+PROHIBIT: Overengineering; ignoring readability or maintainability.
+ON VIOLATION: Halt → log via DT-1 → escalate to Design Review Skill.

@@ -1,0 +1,17 @@
+---
+description: "PC-4: Performance Budget"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# PC-4: Performance Budget
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Performance-sensitive features
+
+## CATEGORY CONTEXT
+- Performance Budget: Acceptable limits for response times, memory, or throughput.
+
+ENFORCE: All features must operate within defined time, memory, and throughput thresholds.
+PROHIBIT: Exceeding performance budgets without approval.
+ON VIOLATION: Escalate to Performance Engineering Skill; provide optimization recommendations.

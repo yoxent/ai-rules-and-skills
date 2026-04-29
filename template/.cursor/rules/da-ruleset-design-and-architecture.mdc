@@ -1,0 +1,34 @@
+---
+description: "DA-RULESET: Design & Architecture"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# DA-RULESET: Design & Architecture
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Governance rules for system architecture and design adherence
+
+## INTENT
+Ensure all code, modules, and system designs adhere to SOLID principles, Clean Code practices, and proper abstraction patterns to maintain maintainability, scalability, and business-aligned architecture.
+
+## DEFINITIONS
+- SOLID Principles: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion.
+- Clean Code: Readable, maintainable, and minimal complexity code.
+- Design Pattern: Reusable solution for common design problems.
+- Abstraction Level: Degree to which implementation details are hidden in favor of business-oriented concepts.
+- Established Convention: A pattern, abstraction, or structural approach already used across the codebase and recognised as the standard approach.
+- Pragmatic Deviation: A deliberate, documented exception to a design principle justified by a specific business or delivery constraint.
+- Overengineering: Introducing complexity beyond actual requirements.
+
+## RULES INDEX
+- DA-1: SOLID & Clean Code First
+- DA-2: Abstraction by Business Meaning
+- DA-3: Conditional Logic Placement
+- DA-4: Change Boundary Rule
+- DA-5: Avoid Overengineering
+- DA-6: Pragmatic Application
+- DA-7: Architectural Consistency
+
+## CHANGELOG
+- 1.0.0: Initial creation.

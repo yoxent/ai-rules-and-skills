@@ -1,0 +1,18 @@
+---
+description: "DA-2: Abstraction by Business Meaning"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# DA-2: Abstraction by Business Meaning
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: New class/module creation
+
+## CATEGORY CONTEXT
+- Business Meaning: Real-world concept the system models.
+- Abstraction Level: Degree to which implementation details are hidden in favor of business-oriented concepts.
+
+ENFORCE: Abstractions must reflect business domain concepts, not technical convenience.
+PROHIBIT: Abstractions created purely for code reuse without business context.
+ON VIOLATION: Escalate to Domain Model Guardian Skill; suggest realignment.

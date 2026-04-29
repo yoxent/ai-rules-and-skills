@@ -1,0 +1,17 @@
+---
+description: "TQ-1: Test Coverage Requirement"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# TQ-1: Test Coverage Requirement
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Every feature and bug fix
+
+## CATEGORY CONTEXT
+- Test Coverage: Degree to which code is exercised by tests.
+
+ENFORCE: All new or changed functionality must have automated tests before merge.
+PROHIBIT: Missing or incomplete tests; merging without coverage confirmation.
+ON VIOLATION: Halt skill execution → notify orchestrator and engineer.

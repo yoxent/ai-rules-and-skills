@@ -1,0 +1,16 @@
+---
+description: "GM-1: Skill Gap Detection"
+alwaysApply: true
+---
+
+# GM-1: Skill Gap Detection
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Any task that cannot be handled by an existing skill
+
+## CATEGORY CONTEXT
+- Skill Gap: A task or request that cannot be executed by any existing skill.
+
+ENFORCE: Tasks with no applicable skill must not proceed; a new skill definition must be requested.
+PROHIBIT: Attempting execution of unhandled tasks.
+ON VIOLATION: Halt task execution → request prompt engineer intervention.

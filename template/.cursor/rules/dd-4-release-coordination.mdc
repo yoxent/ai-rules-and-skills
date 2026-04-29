@@ -1,0 +1,17 @@
+---
+description: "DD-4: Release Coordination"
+globs: **/*.{yaml,yml,json,toml,tf,tfvars,Dockerfile,dockerfile,sh,ps1}
+alwaysApply: false
+---
+
+# DD-4: Release Coordination
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: All production releases
+
+## CATEGORY CONTEXT
+- Release Coordination: Scheduling and managing dependencies for production releases.
+
+ENFORCE: All dependent services must be confirmed available; release must be scheduled with approval before execution.
+PROHIBIT: Uncoordinated releases; ignoring dependency checks.
+ON VIOLATION: Halt release → notify orchestrator and DevOps manager.

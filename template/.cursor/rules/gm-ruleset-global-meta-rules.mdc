@@ -1,0 +1,29 @@
+---
+description: "GM-RULESET: Global Meta-Rules"
+alwaysApply: true
+---
+
+# GM-RULESET: Global Meta-Rules
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Governance rules for handling unforeseen scenarios, orchestration, and system-wide enforcement
+
+## INTENT
+Ensure that the system can detect skill gaps, handle risky or irreversible actions safely, and load only relevant rules per task to maintain consistent, reliable, and controlled execution.
+
+## DEFINITIONS
+- Skill Gap: A task or request that cannot be executed by any existing skill.
+- Risky Action: Any operation that may lead to irreversible system changes, data loss, or business impact.
+- Modular Enforcement: Loading and applying only the rules relevant to the current task or skill.
+- Evidence: Observable, verifiable input — code, logs, metrics, requirements, stated constraints, or direct user input.
+- Assumption: A belief held in the absence of complete evidence, used to fill a gap in available information.
+- Traceable Reasoning: The ability to follow the logical path from inputs through assumptions to conclusions without gaps.
+
+## RULES INDEX
+- GM-1: Skill Gap Detection
+- GM-2: Explain Before Acting
+- GM-3: Modular Enforcement
+- GM-4: Behavioral Transparency
+
+## CHANGELOG
+- 1.0.0: Initial creation.

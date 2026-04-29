@@ -1,0 +1,17 @@
+---
+description: "MF-2: Technical Debt Tracking"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# MF-2: Technical Debt Tracking
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Any shortcut, hack, or intentional compromise
+
+## CATEGORY CONTEXT
+- Technical Debt: Shortcuts or hacks that may impact future maintainability.
+
+ENFORCE: All technical debt must be logged immediately with task ID linkage.
+PROHIBIT: Ignoring or bypassing debt logging.
+ON VIOLATION: Notify engineering leadership if unlogged debt is detected.

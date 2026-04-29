@@ -1,0 +1,13 @@
+---
+description: "PS-4: Decision Transparency"
+alwaysApply: true
+---
+
+# PS-4: Decision Transparency
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: All major product decisions
+
+ENFORCE: Every major decision must be documented with rationale and stakeholder input before execution.
+PROHIBIT: Undocumented major decisions; proceeding without transparency confirmation.
+ON VIOLATION: Escalate missing documentation to Product Governance Skill → halt execution.

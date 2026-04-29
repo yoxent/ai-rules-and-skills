@@ -1,0 +1,26 @@
+---
+description: "PS-RULESET: Product & Stakeholder"
+alwaysApply: true
+---
+
+# PS-RULESET: Product & Stakeholder
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Governance rules for product, stakeholder communication, and feature alignment
+
+## INTENT
+Ensure product decisions, stakeholder communications, and feature implementations are aligned with project goals, business priorities, and risk management standards.
+
+## DEFINITIONS
+- Feature Creep: Uncontrolled expansion of product functionality.
+- Stakeholder Communication: Any report, meeting, or update intended for stakeholders.
+- Project Goals: Agreed-upon objectives that guide development priorities.
+
+## RULES INDEX
+- PS-1: Requirement Validation
+- PS-2: Risk Communication
+- PS-3: Scope Control
+- PS-4: Decision Transparency
+
+## CHANGELOG
+- 1.0.0: Initial creation.

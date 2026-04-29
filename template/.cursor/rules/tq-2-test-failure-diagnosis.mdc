@@ -1,0 +1,17 @@
+---
+description: "TQ-2: Test Failure Diagnosis"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# TQ-2: Test Failure Diagnosis
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Any failing test
+
+## CATEGORY CONTEXT
+- Test Failure: A test not passing expected assertions.
+
+ENFORCE: Every test failure must be investigated to determine whether code or test is at fault before any fix is applied.
+PROHIBIT: Ignoring failures; guessing cause without analysis; deleting a failing test without diagnosis.
+ON VIOLATION: Halt deployment → escalate to responsible engineer and QA Skill.

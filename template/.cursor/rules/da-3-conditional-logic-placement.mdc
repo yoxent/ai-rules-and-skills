@@ -1,0 +1,18 @@
+---
+description: "DA-3: Conditional Logic Placement"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# DA-3: Conditional Logic Placement
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Any branching logic introduction
+
+## CATEGORY CONTEXT
+- Low-Level Class: Class handling concrete implementation.
+- Factory/Strategy Pattern: Design patterns used to encapsulate conditional logic.
+
+ENFORCE: Conditional logic must reside in low-level classes or factory/strategy patterns.
+PROHIBIT: High-level if/else branching in top-level modules; conditionals that violate SRP.
+ON VIOLATION: Escalate to Design Coherence Enforcer Skill; suggest refactor.

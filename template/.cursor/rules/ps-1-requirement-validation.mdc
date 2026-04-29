@@ -1,0 +1,16 @@
+---
+description: "PS-1: Requirement Validation"
+alwaysApply: true
+---
+
+# PS-1: Requirement Validation
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: All feature requests
+
+## CATEGORY CONTEXT
+- Project Goals: Agreed-upon objectives that guide development priorities.
+
+ENFORCE: Every feature must be validated against defined project goals before implementation begins.
+PROHIBIT: Implementing unvalidated features.
+ON VIOLATION: Halt feature execution → escalate to Product Owner or Product Governance Skill.

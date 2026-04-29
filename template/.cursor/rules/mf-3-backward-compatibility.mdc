@@ -1,0 +1,17 @@
+---
+description: "MF-3: Backward Compatibility"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# MF-3: Backward Compatibility
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: API, schema, and interface modifications
+
+## CATEGORY CONTEXT
+- Backward Compatibility: Preserving interfaces and behaviors for existing consumers.
+
+ENFORCE: Changes must preserve existing consumer behavior or provide a migration path and deprecation plan.
+PROHIBIT: Removing or altering existing API behaviors without a deprecation plan.
+ON VIOLATION: Halt deployment → notify relevant stakeholders.

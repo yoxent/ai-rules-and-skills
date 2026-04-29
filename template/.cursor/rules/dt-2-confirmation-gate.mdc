@@ -1,0 +1,16 @@
+---
+description: "DT-2: Confirmation Gate"
+alwaysApply: true
+---
+
+# DT-2: Confirmation Gate
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Any high-risk or principle-breaking action
+
+## CATEGORY CONTEXT
+- High-Risk Action: Any action that can violate core principles or produce irreversible consequences.
+
+ENFORCE: Explicit approval must be obtained and recorded before executing any high-risk action.
+PROHIBIT: Unapproved execution of principle-breaking changes.
+ON VIOLATION: Halt action immediately → notify user and skill manager.

@@ -1,0 +1,17 @@
+---
+description: "MF-4: Root Cause Analysis"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# MF-4: Root Cause Analysis
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Recurring issues and defects
+
+## CATEGORY CONTEXT
+- Root Cause Analysis: Process to identify underlying causes of recurring issues.
+
+ENFORCE: Recurring issues must have a documented root cause and action plan before the fix is accepted.
+PROHIBIT: Repeated patching of symptoms without investigation.
+ON VIOLATION: Escalate unresolved recurring issues to engineering leadership.

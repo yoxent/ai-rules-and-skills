@@ -1,0 +1,17 @@
+---
+description: "PC-2: Tradeoff Confirmation"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# PC-2: Tradeoff Confirmation
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Performance optimizations that violate SOLID or Clean Code
+
+## CATEGORY CONTEXT
+- Tradeoff: Deliberate compromise between competing qualities like speed, maintainability, or correctness.
+
+ENFORCE: All design-principle violations for performance must be explicitly approved and logged via DT-1.
+PROHIBIT: Bypassing design principles without approval.
+ON VIOLATION: Halt execution → escalate to Orchestrator if approval missing.

@@ -1,0 +1,21 @@
+---
+description: "DA-7: Architectural Consistency"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# DA-7: Architectural Consistency
+VERSION: 1.2.0
+PRIORITY: SYSTEM
+SCOPE: Any new pattern, abstraction, or structural approach — whether differing from an established convention or introduced where no convention yet exists.
+
+## CATEGORY CONTEXT
+- Established Convention: A pattern, abstraction, or structural approach already used across the codebase and documented or recognised as the standard approach.
+- Justified Deviation: A deliberate departure from an established convention that is documented, approved, and either extends or replaces the convention intentionally.
+- Architectural Drift: Gradual, unintentional divergence from established conventions due to undocumented deviations.
+- No Established Convention: A pattern area where no prior usage, ADR, or documented standard exists in the codebase.
+
+ENFORCE: If established convention exists: new patterns must match it or carry documented, approved justification. If no convention exists: ask the user for their preferred approach before implementing — do not assume or default silently. This check applies at every decision point during execution, not only at pre-execution.
+ALLOW: Justified deviations when the existing pattern is identified technical debt targeted for replacement.
+PROHIBIT: Silent divergence from conventions; parallel implementations of the same concept in different patterns; silently assuming an implementation approach when no convention exists.
+ON VIOLATION: convention_mismatch → escalate to Design Review Skill → require remediation before merge. convention_replacement → halt until migration plan documented. no_convention → ask_user_preference → block until confirmed.

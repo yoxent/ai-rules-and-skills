@@ -1,0 +1,17 @@
+---
+description: "CL-2: License Validation"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# CL-2: License Validation
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Every new dependency addition
+
+## CATEGORY CONTEXT
+- License Compatibility: Ensuring third-party libraries' licenses permit intended use.
+
+ENFORCE: License compatibility must be verified before any library is integrated.
+PROHIBIT: Using libraries without license verification; integrating incompatible licenses.
+ON VIOLATION: Halt feature integration → notify orchestrator and Compliance Officer.

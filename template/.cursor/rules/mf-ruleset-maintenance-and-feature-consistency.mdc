@@ -1,0 +1,32 @@
+---
+description: "MF-RULESET: Maintenance & Feature Consistency"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# MF-RULESET: Maintenance & Feature Consistency
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Governance rules ensuring features are consistent, backward-compatible, and technical debt is tracked
+
+## INTENT
+Ensure all maintenance activities and new features do not introduce regressions, preserve backward compatibility, and maintain transparency of technical debt, supporting long-term system reliability and clarity.
+
+## DEFINITIONS
+- Feature Consistency: Maintaining existing functionality unaffected by new features.
+- Technical Debt: Shortcuts or hacks that may impact future maintainability.
+- Backward Compatibility: Preserving interfaces and behaviors for existing consumers.
+- Root Cause Analysis: Process to identify underlying causes of recurring issues.
+- Silent Failure: A failure that is caught and suppressed without logging, recovery, or notification.
+- Safe Failure: A failure that produces a defined, expected outcome.
+- Recovery Path: A defined sequence of actions that restores the system to a stable operational state following a failure.
+
+## RULES INDEX
+- MF-1: Feature Consistency
+- MF-2: Technical Debt Tracking
+- MF-3: Backward Compatibility
+- MF-4: Root Cause Analysis
+- MF-5: Reliability Rule
+
+## CHANGELOG
+- 1.0.0: Initial creation.

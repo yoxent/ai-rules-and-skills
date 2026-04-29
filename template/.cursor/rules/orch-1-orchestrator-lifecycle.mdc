@@ -1,0 +1,28 @@
+---
+description: "ORCH-1: Orchestrator Lifecycle"
+alwaysApply: true
+---
+
+# ORCH-1: Orchestrator Lifecycle
+VERSION: 2.8.0
+SCOPE: Semi-adaptive deterministic skill execution lifecycle with dynamic loading and micro-kernel invariants. Triggered per_prompt INCLUDING follow-ups AND confirmations; no_prompt_exempt.
+
+STAGES: 1.Intent-Parsing 2.Skill-Selection 3.Dependency-Resolution(Cond) 4.Task-Planning(Cond) 5.Pre-Execution-Rule-Check 6.Confirmation-Gate(Cond) 7.Skill-Execution 8.Post-Execution-Rule-Check(Cond) 9.Decision-Logging(Cond) 10.Completion-Validation
+
+ACTIVATE: Dependency-Resolution IF skill_count>1 OR deps_declared. Task-Planning IF risk∈{MEDIUM,HIGH} OR multi_step OR persistent_state_modified. Confirmation-Gate IF risk=HIGH OR rule_requires_confirmation OR irreversible_operation. Post-Execution-Rule-Check IF persistent_state_modified OR deployment_or_migration. Decision-Logging IF architectural_decision OR tradeoff_applied OR rule_override_approved.
+
+LOAD: CONTEXT.md imports agents/orchestrator/orch-1.md+agents/orchestrator/skills/skill_registry.md only. Stage 1: load capability_index.md → identify one or more agents or domains from intent+type field. IF goal_level_input → load goal-task-decomposition → block Stage 2 until state file written. IF explicit_continuation_signal → load goal-task-tracking → surface next pending task before Stage 2. Stage 2: IF orchestrator skill_registry.md not in context → view first. Load each matched agent or domain skill_registry.md → match intent against skill names across all loaded registries → resolve full path as parent of skill_registry.md's folder + section-header + skill-name + .md → view. IF section header missing or malformed → resolve as {agent-or-domain-root}/skills/{section-name}/{skill-name}.md using root from capability_index.md. Stage 5: read rules field from skill compact header → view rules/CATEGORY/RULE-ID.md. Stage 10: IF active_goal_session → trigger goal-task-tracking with completed task ID. Flag-Triggered: named-skill flag→load and execute before advancing stage; increment hop_counter per hop; reset on convergence (no return flag); hop_counter>=4→pause→surface_cycle_path_and_unresolved_condition_and_hop_count→ask_continue_or_stop→on_stop:abort on_continue:resume_without_reset; unhandled=execution_error.
+
+RULES: Pre-exec: evaluate all hard constraints; violation→BLOCK→surface→confirm OR abort. Post-exec: validate state compliance; violation→BLOCK→escalate_to_confirmation. Rules override skills.
+
+CONFLICTS: 1.Skill-Dependency-Resolution 2.Rule-Enforcement 3.Confirmation-Gate 4.Abort. Confirmation overrides rule block ONLY IF rule explicitly permits.
+
+RISK: LOW=reversible OR informational. MEDIUM=state_modifying AND recoverable. HIGH=irreversible OR destructive OR compliance_sensitive OR production_impacting. Risk escalates; never decreases.
+
+INVARIANTS: preserve_declared_constraints=TRUE; detect_scope_drift=TRUE; contradiction_detected→escalate_to_confirmation. persist_approved_architectural_decisions=TRUE; stale_constraint_detected→prune_before_stage_4; memory_conflict→escalate_to_decision_logging.
+
+COMPLETE IF: no_active_rule_violations AND no_pending_confirmation AND all_planned_steps_executed. IF active_goal_session→trigger goal-task-tracking→mark_task_done→surface_next_pending_task.
+
+FAILURE: dependency_conflict_unresolved→escalate_to_confirmation. rule_violation_without_override→abort. missing_capability→trigger:skill-gap-detection. goal_level_input→trigger:goal-task-decomposition→block_stage_2. explicit_continuation_signal→trigger:goal-task-tracking→surface_next_task. unresolvable_conflict→abort.
+
+VERSIONING: MAJOR=stage_order_changed OR lifecycle_semantics_changed OR checkpoint_repositioned OR completion_criteria_altered. MINOR=activation_logic_extended OR escalation_path_added OR risk_classification_extended OR dynamic_loading_changed. PATCH=non_behavioral_clarification.

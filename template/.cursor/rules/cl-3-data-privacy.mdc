@@ -1,0 +1,17 @@
+---
+description: "CL-3: Data Privacy"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# CL-3: Data Privacy
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: All sensitive data handling
+
+## CATEGORY CONTEXT
+- Sensitive Data: Information requiring confidentiality or protection under law or policy.
+
+ENFORCE: Sensitive data must be encrypted at rest and in transit; access controls must enforce least privilege; logs must never contain PII.
+PROHIBIT: Storing sensitive data without encryption; sharing without authorization; PII in logs or config files.
+ON VIOLATION: Halt skill execution → notify orchestrator and Security Skill.

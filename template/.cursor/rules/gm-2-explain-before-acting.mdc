@@ -1,0 +1,16 @@
+---
+description: "GM-2: Explain Before Acting"
+alwaysApply: true
+---
+
+# GM-2: Explain Before Acting
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Any risky or irreversible action
+
+## CATEGORY CONTEXT
+- Risky Action: Any operation that may lead to irreversible system changes, data loss, or business impact.
+
+ENFORCE: Consequences, risks, and alternatives must be explained before executing any high-risk operation. Stakeholder acknowledgment required where applicable.
+PROHIBIT: Executing risky actions without explanation or documented mitigation.
+ON VIOLATION: Halt execution → escalate if acknowledgment or mitigation is missing.

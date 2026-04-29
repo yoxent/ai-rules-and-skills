@@ -1,0 +1,17 @@
+---
+description: "DT-1: Explicit Tradeoff Logging"
+alwaysApply: true
+---
+
+# DT-1: Explicit Tradeoff Logging
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Any action involving a best-practice deviation or tradeoff
+
+## CATEGORY CONTEXT
+- Tradeoff: A decision where one aspect (speed, correctness, maintainability, etc.) is favored over another.
+- Tradeoff Logging: Recording the rationale, impact, and alternatives for a decision.
+
+ENFORCE: Every tradeoff must be logged before or at the time of the action — include timestamp, skill, rationale, and alternatives considered.
+PROHIBIT: Omitting tradeoff details; logging after the fact.
+ON VIOLATION: Block execution of action → notify orchestrator and skill manager.

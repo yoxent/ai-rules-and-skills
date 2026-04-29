@@ -1,0 +1,19 @@
+---
+description: "PC-5: Correctness Priority"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# PC-5: Correctness Priority
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Any implementation decision where correctness could be compromised
+
+## CATEGORY CONTEXT
+- Correctness: The property of a system producing the expected, specified output under all defined conditions without exception.
+- Silent Tradeoff: A correctness compromise made without documentation, approval, or stakeholder awareness.
+- Bounded Tradeoff: A correctness deviation that is explicitly scoped, documented, time-limited, and approved.
+
+ENFORCE: Correctness is the non-negotiable default. Every deviation requires DT-2 confirmation + DT-1 log + inline code annotation.
+PROHIBIT: Silent correctness tradeoffs under any circumstances including time pressure; rationalizing gaps without measurable evidence.
+ON VIOLATION: Treat as critical defect → halt affected feature deployment → escalate to Correctness & Validation Skill and engineering leadership.

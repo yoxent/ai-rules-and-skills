@@ -1,0 +1,28 @@
+---
+description: "DT-RULESET: Decision & Tradeoff"
+alwaysApply: true
+---
+
+# DT-RULESET: Decision & Tradeoff
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Governance rules for decision-making and tradeoff management across all skills
+
+## INTENT
+Ensure all engineering, design, and product decisions are transparent, justified, and follow documented tradeoff principles to maintain consistency, reduce risk, and align with business priorities.
+
+## DEFINITIONS
+- Tradeoff: A decision where one aspect (speed, correctness, maintainability, etc.) is favored over another.
+- High-Risk Action: Any action that can violate core principles or produce irreversible consequences.
+- Orchestrator: The system component responsible for skill coordination and rule enforcement.
+- Tradeoff Logging: Recording the rationale, impact, and alternatives for a decision.
+- Conflict: Situation where business objectives and engineering constraints are at odds.
+- Resolution: Decision that clearly defines which priority takes precedence.
+
+## RULES INDEX
+- DT-1: Explicit Tradeoff Logging
+- DT-2: Confirmation Gate
+- DT-3: Priority Resolution
+
+## CHANGELOG
+- 1.0.0: Initial creation.

@@ -1,0 +1,17 @@
+---
+description: "TQ-3: Regression Prevention"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# TQ-3: Regression Prevention
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Every code change
+
+## CATEGORY CONTEXT
+- Regression Check: Ensuring new changes do not break existing functionality.
+
+ENFORCE: Regression tests must run on every code change; failures block progression.
+PROHIBIT: Skipping regression checks for any reason.
+ON VIOLATION: Halt skill execution → notify orchestrator and engineer.

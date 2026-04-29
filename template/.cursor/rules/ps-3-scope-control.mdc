@@ -1,0 +1,16 @@
+---
+description: "PS-3: Scope Control"
+alwaysApply: true
+---
+
+# PS-3: Scope Control
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Any feature addition or expansion request
+
+## CATEGORY CONTEXT
+- Feature Creep: Uncontrolled expansion of product functionality.
+
+ENFORCE: All scope changes require explicit approval; every addition must be logged with decision rationale.
+PROHIBIT: Adding features without approval; silent scope expansion.
+ON VIOLATION: Escalate to Product Governance Skill → halt unapproved implementation.

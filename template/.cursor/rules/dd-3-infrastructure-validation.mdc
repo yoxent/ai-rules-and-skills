@@ -1,0 +1,17 @@
+---
+description: "DD-3: Infrastructure Validation"
+globs: **/*.{yaml,yml,json,toml,tf,tfvars,Dockerfile,dockerfile,sh,ps1}
+alwaysApply: false
+---
+
+# DD-3: Infrastructure Validation
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: All infrastructure changes via IaC
+
+## CATEGORY CONTEXT
+- IaC: Infrastructure as Code, automating provisioning and configuration.
+
+ENFORCE: All IaC scripts must be validated for correctness and idempotence before application; all changes must be logged.
+PROHIBIT: Manual unverified infrastructure changes; scripts with destructive side effects.
+ON VIOLATION: Abort infrastructure deployment → notify Orchestrator and DevOps Lead.

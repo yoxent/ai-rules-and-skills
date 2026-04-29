@@ -1,0 +1,28 @@
+---
+description: "DD-RULESET: DevOps & Deployment"
+globs: **/*.{yaml,yml,json,toml,tf,tfvars,Dockerfile,dockerfile,sh,ps1}
+alwaysApply: false
+---
+
+# DD-RULESET: DevOps & Deployment
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Governance rules for deployment, CI/CD, and infrastructure management
+
+## INTENT
+Ensure all deployment, DevOps, and infrastructure tasks follow best practices, maintain reliability, and prevent downtime or misconfigurations.
+
+## DEFINITIONS
+- CI/CD: Continuous Integration and Continuous Deployment pipeline.
+- Rollback Plan: Predefined procedure to revert deployments safely.
+- IaC: Infrastructure as Code, automating provisioning and configuration.
+- Release Coordination: Scheduling and managing dependencies for production releases.
+
+## RULES INDEX
+- DD-1: CI/CD Enforcement
+- DD-2: Rollback Readiness
+- DD-3: Infrastructure Validation
+- DD-4: Release Coordination
+
+## CHANGELOG
+- 1.0.0: Initial creation.

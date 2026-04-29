@@ -1,0 +1,18 @@
+---
+description: "PC-1: Analyze Complexity"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# PC-1: Analyze Complexity
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Algorithm or data structure selection
+
+## CATEGORY CONTEXT
+- Complexity Analysis: Measurement of algorithmic efficiency (time/space) using Big O notation.
+- Performance Budget: Acceptable limits for response times, memory, or throughput.
+
+ENFORCE: Estimate Big O time and space complexity for every algorithm and data structure choice.
+PROHIBIT: Choosing algorithms or structures that violate defined performance budgets.
+ON VIOLATION: Escalate to Performance Engineering Skill; suggest alternative algorithms.

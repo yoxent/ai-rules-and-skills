@@ -1,0 +1,48 @@
+---
+description: "REM-RULESET: Rule Execution Model"
+alwaysApply: true
+---
+
+# REM-RULESET: Rule Execution Model
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Standardized workflow for evaluating and executing rules within the AI Senior Engineer framework
+
+## INTENT
+Define the formal process for parsing intent, selecting skills, loading rules, evaluating rule compliance, applying tradeoff gates, and logging decisions to ensure consistent, safe, and auditable execution.
+
+## DEFINITIONS
+- Intent Parsing: Process of interpreting user input or system requests into actionable tasks.
+- Skill Selection: Determining which AI skills are relevant for a given intent.
+- Rule Groups: Modular sets of rules corresponding to design, performance, testing, maintenance, compliance, DevOps, decision-making, and product governance.
+- Tradeoff Gates: Mechanism to resolve conflicts between competing priorities such as correctness, performance, and maintainability.
+- Decision Logging: Recording all actions, exceptions, and tradeoff choices for audit and consistency.
+
+## EXECUTION SEQUENCE
+Every task must follow this order — no step may be skipped:
+
+1. PARSE intent from user input or system request.
+2. SELECT skills applicable to the parsed intent.
+3. LOAD only rule subsets relevant to selected skills (GM-3).
+4. EVALUATE all loaded rules before and during skill execution.
+5. APPLY tradeoff gates if rule conflicts are detected (DT-1, DT-2, DT-3).
+6. LOG all decisions, exceptions, and tradeoff choices.
+
+## HARD CONSTRAINTS
+- No skill executes without completed intent parsing.
+- No skill executes if a hard constraint violation is detected.
+- All tradeoff gates triggered must be resolved and logged before proceeding.
+- All executed skills and rule evaluations must be logged.
+
+## PROHIBITIONS
+- Bypassing rule evaluation.
+- Executing skills without explicit mapping to parsed intent.
+- Ignoring or deferring tradeoff conflict resolution.
+
+## ON FAILURE
+- Halt execution immediately on any hard constraint violation.
+- Notify orchestrator with full context.
+- Provide remediation steps before retry is permitted.
+
+## CHANGELOG
+- 1.0.0: Initial creation of Rule Execution Model.

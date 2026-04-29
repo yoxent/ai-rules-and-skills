@@ -1,0 +1,17 @@
+---
+description: "PC-3: Business Priority Override"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# PC-3: Business Priority Override
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: Conflicts between correctness, speed, and maintainability
+
+## CATEGORY CONTEXT
+- Business Priority: Key project focus (speed, correctness, maintainability).
+
+ENFORCE: Identify and document which business priority applies before proceeding; record resolution.
+PROHIBIT: Arbitrary deviation from project priorities; acting on unresolved conflicts.
+ON VIOLATION: Escalate to project leadership if priorities are unclear; halt until resolved.

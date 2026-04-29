@@ -1,0 +1,17 @@
+---
+description: "MF-1: Feature Consistency"
+globs: **/*.{dart,js,jsx,ts,tsx,py,cs,go,java,kt,swift,rs,cpp,c,h,hpp,sql,yaml,yml,json,toml}
+alwaysApply: false
+---
+
+# MF-1: Feature Consistency
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: All new features
+
+## CATEGORY CONTEXT
+- Feature Consistency: Maintaining existing functionality unaffected by new features.
+
+ENFORCE: New features must not alter existing functionality; regression tests must confirm.
+PROHIBIT: Deploying features that break existing behavior.
+ON VIOLATION: Halt deployment → notify orchestrator → log issue.
