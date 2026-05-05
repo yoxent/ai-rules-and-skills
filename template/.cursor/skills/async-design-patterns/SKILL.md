@@ -5,7 +5,7 @@ description: "Use when task requires On non-blocking feature implementation or a
 
 # Async Design Patterns
 
-name:async-design-patterns|pri:M|deps:[language-specific-implementation]|flags:[concurrency-handling,error-handling-resilience,test-creation-strategy,correctness-validation,regression-prevention]|rules:[DA-1,PC-2,TQ-1,GM-2]
+name:async-design-patterns|pri:M|deps:[language-specific-implementation,clean-code-solid]|flags:[concurrency-handling,error-handling-resilience,test-creation-strategy,correctness-validation,regression-prevention]|rules:[DA-1,PC-2,TQ-1,GM-2]
 
 SCOPE: On non-blocking feature implementation or async refactor. Design async workflows with correct error propagation, cancellation, and contained scope.
 

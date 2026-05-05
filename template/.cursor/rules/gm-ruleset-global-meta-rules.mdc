@@ -24,6 +24,8 @@ Ensure that the system can detect skill gaps, handle risky or irreversible actio
 - GM-2: Explain Before Acting
 - GM-3: Modular Enforcement
 - GM-4: Behavioral Transparency
+- GM-5: Code Ownership and Edit Confirmation
 
 ## CHANGELOG
 - 1.0.0: Initial creation.
+- 1.1.0: Added GM-5 for code ownership and pre-edit confirmation.

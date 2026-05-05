@@ -9,7 +9,7 @@ name:framework-mastery|pri:M|deps:[]|flags:[security,backward-compatibility,lang
 
 SCOPE: Stage 7 when framework lifecycle, DI, or config patterns required. Apply conventions correctly for the confirmed framework version.
 
-ENFORCE: Confirm version before selecting patterns; Validate against existing project usage (DA-1); Prefer framework built-ins over custom (DA-5); Verify DI bindings in test and production contexts; Flag security when security defaults modified; Assess breaking changes before upgrades (MF-3); Test lifecycle edge cases (TQ-1); Log deviations via DT-1.
+ENFORCE: guidance involves code-level implementation → flag:language-specific-implementation → co_invoke before guidance; Confirm version before selecting patterns; Validate against existing project usage (DA-1); Prefer framework built-ins over custom (DA-5); Verify DI bindings in test and production contexts; Flag security when security defaults modified; Assess breaking changes before upgrades (MF-3); Test lifecycle edge cases (TQ-1); Log deviations via DT-1.
 
 PROHIBIT: Field injection when constructor injection is project standard; Business logic in framework infrastructure; Preview APIs without stability note; Upgrade without breaking change assessment; Unjustified security default changes.
 

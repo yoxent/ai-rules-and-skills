@@ -2,7 +2,7 @@
 ---
 name: modularity
 description: Decomposes system components into cohesive, loosely coupled modules with explicit interfaces and single-responsibility boundaries at architectural scale.
-version: 1.0.0
+version: 1.1.0
 category: Architecture
 tags: [modularity, cohesion, coupling, interfaces, boundaries]
 priority: High
@@ -122,6 +122,16 @@ Modularity runs after System Design, which establishes the component-level map. 
 ---
 
 ## Step-by-Step Execution Procedure
+
+### Pre-Execution: Detect Code Artifacts in Scope
+
+**Action:**
+- [ ] Determine whether this invocation involves existing code (not a greenfield design).
+- [ ] If existing code is in scope → flag **refactoring** → co-invoke before planning begins.
+
+*Pure greenfield design invocations (no existing code to reorganize) do not trigger co-invocation.*
+
+---
 
 ### Step 1: Domain Decomposition Within Components
 

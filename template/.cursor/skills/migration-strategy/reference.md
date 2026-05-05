@@ -2,13 +2,13 @@
 ---
 name: migration-strategy
 description: Plans and governs system migrations with phased execution, data integrity validation, rollback readiness, and coordinated cross-team execution to minimize downtime and risk.
-version: 1.0.0
+version: 1.1.0
 category: Architecture
 tags: [migration, data-integrity, rollback, phased-migration, coordination]
 priority: High
 
 depends_on: [system-design]
-flags_skills: [dependency-management, performance-optimization, backward-compatibility, observability, incident-response]
+flags_skills: [language-specific-implementation, dependency-management, performance-optimization, backward-compatibility, observability, incident-response]
 
 inputs: [current-architecture, target-architecture, data-dependencies, downtime-tolerance, sla-requirements]
 outputs: [migration-plan, risk-assessment, rollback-strategy, success-criteria]
@@ -117,6 +117,14 @@ Phased migrations reduce blast radius. Per-phase rollback enables controlled rec
 ---
 
 ## Step-by-Step Execution Procedure
+
+### Pre-Execution: Detect Code Artifacts in Scope
+
+**Action:** At execution start, determine whether migration planning involves code-level implementation.
+- If yes → flag **language-specific-implementation** and co-invoke before planning begins
+- If no (pure migration architecture/phasing design) → continue to Step 1
+
+---
 
 ### Step 1: Migration Scope and Pattern Selection
 

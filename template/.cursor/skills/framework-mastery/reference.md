@@ -2,7 +2,7 @@
 ---
 name: framework-mastery
 description: Applies framework-specific conventions, lifecycle patterns, and best practices for consistent, secure, and performant application development.
-version: 1.0.0
+version: 1.1.0
 category: Engineering
 tags: [framework, lifecycle, conventions, integration, best-practices]
 priority: Medium
@@ -113,6 +113,16 @@ Often invoked alongside or immediately after **language-specific-implementation*
 ---
 
 ## Step-by-Step Execution Procedure
+
+### Pre-Execution: Detect Code Artifacts in Scope
+
+**Action:**
+- [ ] Determine whether this invocation involves code generation, framework implementation, or code-level integration (not a pure advisory or audit invocation).
+- [ ] If code artifacts are in scope → flag **language-specific-implementation** → co-invoke before planning begins.
+
+*Pure advisory invocations (e.g., upgrade risk assessment, anti-pattern audit without implementation scope) do not trigger co-invocation.*
+
+---
 
 ### Step 1: Identify Framework Version and Established Patterns
 

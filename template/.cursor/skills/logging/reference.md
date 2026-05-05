@@ -2,12 +2,12 @@
 ---
 name: logging
 description: Implements structured, consistent logging across all system components to support debugging, auditing, compliance, and observability requirements without capturing sensitive data.
-version: 1.0.0
+version: 1.1.0
 category: Architecture
 tags: [logging, structured-logs, audit-trail, compliance, debugging]
 priority: Medium
 depends_on: [system-design]
-flags_skills: [observability, security, configuration, technical-debt-management]
+flags_skills: [language-specific-implementation, observability, security, configuration, technical-debt-management]
 inputs: [application-components, event-types, severity-levels, compliance-requirements, observability-strategy]
 outputs: [logging-standards, retention-policies, structured-log-formats, centralized-logging-setup]
 rules_applied:
@@ -94,6 +94,14 @@ Structured logs are machine-parseable, queryable, and feed directly into observa
 ---
 
 ## Step-by-Step Execution Procedure
+
+### Pre-Execution: Detect Code Artifacts in Scope
+
+**Action:** At execution start, determine whether logging design involves code-level implementation.
+- If yes → flag **language-specific-implementation** and co-invoke before planning begins
+- If no (pure logging architecture/policy design) → continue to Step 1
+
+---
 
 ### Step 1: Define the Log Taxonomy
 

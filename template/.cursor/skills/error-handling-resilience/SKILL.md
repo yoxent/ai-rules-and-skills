@@ -5,7 +5,7 @@ description: "Use when task requires Ensures systems fail safely, transparently,
 
 # Error Handling Resilience
 
-name:error-handling-resilience|pri:M|deps:[correctness-validation]|flags:[correctness-validation,bug-diagnosis,documentation-knowledge-transfer,observability,test-creation-strategy,regression-prevention]|rules:[MF-5,GM-2,DT-1,TQ-1]
+name:error-handling-resilience|pri:M|deps:[correctness-validation,clean-code-solid]|flags:[correctness-validation,bug-diagnosis,documentation-knowledge-transfer,observability,test-creation-strategy,regression-prevention]|rules:[MF-5,GM-2,DT-1,TQ-1]
 SCOPE: Ensures systems fail safely, transparently, and recoverably with explicit error paths and actionable diagnostics
 ENFORCE: Prevent silent failures that corrupt state or produce incorrect results per MF-5; Ensure all exception paths handled explicitly, never swallowed; Design retry logic with exponential backoff and jitter to prevent storms; Provide actionable, structured diagnostic information; Test error paths with same rigor as happy paths per TQ-1; Maintain system stability under partial failures; Log error-masking decisions per DT-1; Explain risky error-masking before implementing per GM-2
 PROHIBIT: Silent exception swallowing without logging; Catch-all exception handlers without structured handling; Generic error messages with no diagnostic value; Retry storms without backoff; Masking errors for UX without logging per DT-1; Not testing error paths

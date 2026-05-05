@@ -2,7 +2,7 @@
 ---
 name: scalability
 description: Designs explicit scaling strategies for system components to handle projected load growth within defined performance budgets, without architectural redesign.
-version: 1.0.0
+version: 1.1.0
 category: Architecture
 tags: [scalability, performance, load, bottlenecks, distributed-systems]
 priority: High
@@ -124,6 +124,16 @@ Scalability is a design-time skill, not a diagnostic tool. It operates on system
 ---
 
 ## Step-by-Step Execution Procedure
+
+### Pre-Execution: Detect Code Artifacts in Scope
+
+**Action:**
+- [ ] Determine whether this invocation involves an existing codebase with code-level performance concerns (not a greenfield architecture-only design).
+- [ ] If code-level performance decisions are in scope → flag **performance-optimization** → co-invoke before planning begins.
+
+*Pure infrastructure scaling design for greenfield systems does not trigger co-invocation.*
+
+---
 
 ### Step 1: Load Profile Analysis
 

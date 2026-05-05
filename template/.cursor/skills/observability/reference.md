@@ -2,13 +2,13 @@
 ---
 name: observability
 description: Designs monitoring, distributed tracing, and alerting strategies to provide actionable visibility into system behavior and enable rapid fault detection and root-cause analysis.
-version: 1.0.0
+version: 1.1.0
 category: Architecture
 tags: [observability, monitoring, tracing, alerting, slo]
 priority: High
 
 depends_on: [system-design]
-flags_skills: [logging, security, performance-optimization, incident-response, scalability]
+flags_skills: [language-specific-implementation, logging, security, performance-optimization, incident-response, scalability]
 
 inputs: [system-architecture, slo-definitions, critical-metrics, event-sources, compliance-requirements]
 outputs: [monitoring-dashboards, alerting-rules, tracing-configuration, logging-strategy, slo-burn-rate-model]
@@ -115,6 +115,14 @@ Observability runs after System Design, often co-triggered with Security and Sca
 ---
 
 ## Step-by-Step Execution Procedure
+
+### Pre-Execution: Detect Code Artifacts in Scope
+
+**Action:** At execution start, determine whether observability design involves code-level implementation.
+- If yes → flag **language-specific-implementation** and co-invoke before planning begins
+- If no (pure observability architecture/strategy design) → continue to Step 1
+
+---
 
 ### Step 1: Define the Golden Signals per Component
 

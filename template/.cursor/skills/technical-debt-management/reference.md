@@ -2,7 +2,7 @@
 ---
 name: technical-debt-management
 description: Identifies, quantifies, and manages technical debt to ensure it is visible, prioritized, and addressed systematically before it causes delivery paralysis or systemic failures.
-version: 1.2.0
+version: 1.3.0
 category: Architecture
 tags: [technical-debt, refactoring, maintainability, quality, prioritization]
 priority: High
@@ -125,6 +125,16 @@ Runs after shortcuts are introduced or when other skills surface debt signals. T
 ---
 
 ## Step-by-Step Execution Procedure
+
+### Pre-Execution: Detect Code Artifacts in Scope
+
+**Action:**
+- [ ] Determine whether this invocation involves active remediation planning (not a check-debt-register review).
+- [ ] If planning remediation of code-level debt items → flag **refactoring** → co-invoke before planning begins.
+
+*check-debt-register mode is a read-only register review — co-invocation does not apply.*
+
+---
 
 ### Step 1: Debt Discovery and Inventory
 

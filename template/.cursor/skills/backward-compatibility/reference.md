@@ -2,12 +2,12 @@
 ---
 name: backward-compatibility
 description: Validates that system updates preserve compatibility with existing consumers across APIs, services, and products, providing migration paths and deprecation timelines when breaking changes are unavoidable.
-version: 1.1.0
+version: 1.2.0
 category: Architecture
 tags: [backward-compatibility, api-contracts, migration, consumers, breaking-changes]
 priority: High
 depends_on: [system-design]
-flags_skills: [api-design, stakeholder-communication, migration-strategy]
+flags_skills: [language-specific-implementation, api-design, stakeholder-communication, migration-strategy]
 inputs: [existing-api-contracts, release-plans, change-descriptions, consumer-dependency-requirements]
 outputs: [compatibility-matrices, migration-guides, deprecation-plans, contract-test-requirements]
 rules_applied:
@@ -33,8 +33,10 @@ execution_context: Runs when API, module, or product changes are proposed that m
 **What this skill does:**
 Backward Compatibility validates that proposed changes to APIs, modules, services, or products do not break existing consumers — including end users and integrations that depend on features, routes, exported formats, or workflows. When breaking changes are unavoidable, it designs the migration path, compatibility shim, or deprecation plan that allows consumers to migrate safely. It is the primary enforcement mechanism for MF-3.
 
+**Business value:**
 Breaking changes in production APIs are among the most visible engineering failures — consuming applications stop working, partners are disrupted, and customer trust is damaged. This skill makes incompatibility visible before deployment, designs the migration path, and ensures stakeholders are informed and have approved any unavoidable breaking change.
 
+**Engineering value:**
 Explicit compatibility validation prevents "it worked in testing" failures caused by assumptions about interface stability. Compatibility matrices make the impact surface explicit. Migration guides reduce consumer migration effort. Contract tests prevent regressions.
 
 ---
@@ -101,6 +103,14 @@ Typically invoked after Versioning classifies a change as BREAKING. May also be 
 ---
 
 ## Step-by-Step Execution Procedure
+
+### Pre-Execution: Detect Code Artifacts in Scope
+
+**Action:** At execution start, determine whether backward-compatibility analysis involves code-level implementation.
+- If yes → flag **language-specific-implementation** and co-invoke before planning begins
+- If no (pure compatibility analysis/migration design) → continue to Step 1
+
+---
 
 ### Step 1: Contract Inventory and Baseline
 
@@ -191,12 +201,13 @@ For each breaking change: [Before/After examples and migration steps]
 
 ## Core Responsibilities
 
-1. Inventory all interface contracts and their consumers before evaluating any proposed change
-2. Classify every proposed change as COMPATIBLE, MIGRATION REQUIRED, or UNKNOWN per consumer
-3. Design a concrete migration path (additive, versioned, or shim) for every breaking change
-4. Gate every unavoidable breaking change through DT-2 stakeholder approval
-5. Produce consumer-actionable migration guides with concrete before/after examples
-6. Specify contract tests that prevent future regression of the compatibility guarantee
+1. At execution start, detect whether backward-compatibility analysis involves code-level implementation; if so → flag **language-specific-implementation** and co-invoke before planning begins.
+2. Inventory all interface contracts and their consumers before evaluating any proposed change
+3. Classify every proposed change as COMPATIBLE, MIGRATION REQUIRED, or UNKNOWN per consumer
+4. Design a concrete migration path (additive, versioned, or shim) for every breaking change
+5. Gate every unavoidable breaking change through DT-2 stakeholder approval
+6. Produce consumer-actionable migration guides with concrete before/after examples
+7. Specify contract tests that prevent future regression of the compatibility guarantee
 
 ---
 
@@ -260,6 +271,12 @@ For each breaking change: [Before/After examples and migration steps]
 
 **Action:** Flag migration-strategy. Require a formal migration plan before proceeding with the breaking change. Migration Strategy produces the sequenced execution plan.
 
+### Code-Level Implementation in Scope
+
+**Trigger:** Backward-compatibility analysis identifies code-level implementation requirements (e.g., compatibility shims, migration scripts, or adapter layers).
+
+**Action:** Flag **language-specific-implementation** and co-invoke before compatibility design proceeds. Do not finalize shim or migration path design for implementation-dependent components until language-specific guidance is available.
+
 ---
 
 ### When to halt execution:
@@ -289,6 +306,7 @@ For each breaking change: [Before/After examples and migration steps]
 
 | Scenario Detected | Flag This Skill | Reason |
 |---|---|---|
+| Code-level implementation in scope (proactive — at execution start) | language-specific-implementation | Code-level implementation requires language-correct patterns |
 | Breaking change caused by fixable API design defect | api-design | Additive redesign may eliminate the break |
 | Breaking change affects external consumers | stakeholder-communication | Formal notification required; deprecation timeline to communicate |
 | Migration involves multi-service or data coordination | migration-strategy | Formal sequenced migration plan required |
@@ -380,6 +398,14 @@ A legacy API version uses a deprecated authentication scheme with a known CVE. T
 
 * Backward-compatibility ends when the migration path is designed and documented; Migration Strategy begins when execution of a complex migration must be planned and sequenced
 * Backward-compatibility identifies affected consumers; Stakeholder Communication manages the formal notification and negotiation process
+
+---
+
+## Version History
+
+**v1.2.0 (2026-05-05)** — Added proactive ENFORCE clause: detect code-level implementation at execution start and co-invoke language-specific-implementation. Added Pre-Execution step, Core Responsibility 1 (renumbered 1–6 → 2–7), Skills That May Be Flagged proactive row, and escalation scenario for code-level implementation in scope.
+
+**v1.1.0** — Prior version (no changelog recorded).
 
 ---
 

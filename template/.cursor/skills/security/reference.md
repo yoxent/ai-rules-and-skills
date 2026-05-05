@@ -2,12 +2,12 @@
 ---
 name: security
 description: Identifies and mitigates security vulnerabilities at the architectural level, enforcing authentication, authorization, encryption, and regulatory compliance across all system components.
-version: 1.0.0
+version: 1.1.0
 category: Architecture
 tags: [security, authentication, authorization, encryption, compliance]
 priority: High
 depends_on: [system-design]
-flags_skills: [system-design, observability, dependency-management, logging, incident-response]
+flags_skills: [language-specific-implementation, system-design, observability, dependency-management, logging, incident-response]
 inputs: [architecture-diagrams, compliance-requirements, threat-models, data-classification]
 outputs: [security-controls, threat-mitigation-plan, access-control-strategy, encryption-standards]
 rules_applied:
@@ -123,6 +123,14 @@ Security is a design-time skill that runs in parallel with or immediately after 
 ---
 
 ## Step-by-Step Execution Procedure
+
+### Pre-Execution: Detect Code Artifacts in Scope
+
+**Action:** At execution start, determine whether security analysis involves code-level implementation.
+- If yes → flag **language-specific-implementation** and co-invoke before planning begins
+- If no (pure security architecture/policy design) → continue to Step 1
+
+---
 
 ### Step 1: Data Classification and Trust Boundary Mapping
 

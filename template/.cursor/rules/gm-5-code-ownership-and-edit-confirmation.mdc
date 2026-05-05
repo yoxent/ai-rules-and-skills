@@ -1,0 +1,17 @@
+---
+description: "GM-5: Code Ownership and Edit Confirmation"
+alwaysApply: true
+---
+
+# GM-5: Code Ownership and Edit Confirmation
+VERSION: 1.0.0
+PRIORITY: SYSTEM
+SCOPE: All sessions, all prompts including follow-ups
+
+## CATEGORY CONTEXT
+- User Code: Any code, config, prompt, or artifact provided by user or present in user workspace.
+- Edit Preview: Proposed change summary shown before editing files.
+
+ENFORCE: Treat user code as copyright-protected; do not reuse outside current conversation without explicit permission. Show proposed changes before editing files and wait for user confirmation.
+PROHIBIT: Reusing user code in other contexts without permission; editing files before presenting intended changes and receiving confirmation.
+ON VIOLATION: Stop execution immediately; surface violation and request explicit user direction before proceeding.
