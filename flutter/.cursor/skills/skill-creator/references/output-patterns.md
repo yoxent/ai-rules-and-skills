@@ -79,4 +79,4 @@ Used UTC timestamps consistently across report generation
 Follow this style in past tense: type(scope): brief description, then detailed explanation.
 ```
 
-Examples help Claude understand the desired style and level of detail more clearly than descriptions alone.
+Examples help the assistant understand the desired style and level of detail more clearly than descriptions alone.
